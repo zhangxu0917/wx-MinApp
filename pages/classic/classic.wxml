@@ -1,0 +1,12 @@
+<view class='container'>
+  <view class="header">
+    <v-epsoide class="epsoide" index="{{classicData.index}}"></v-epsoide>
+    <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></v-like>
+  </view>
+
+  <v-movie hidden="{{classicData.data.type !== 100}}" img="{{classicData.data.image}}" content="{{classicData.data.content}}"></v-movie>
+  <v-music wx:if="{{classicData.data.type === 200}}" img="{{classicData.data.image}}" content="{{classicData.data.content}}" src="{{classicData.data.url}}"></v-music>
+  <v-essay hidden="{{classicData.data.type !== 300}}" img="{{classicData.data.image}}" content="{{classicData.data.content}}"></v-essay>
+
+  <v-nav bind:left="onNext" bind:right="onPrevious" class="nav" title="{{classicData.data.title}}" first="{{first}}" latest="{{latest}}"></v-nav>
+</view>
