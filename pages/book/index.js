@@ -1,18 +1,42 @@
 // pages/book/index.js
+import { BookModel } from '../../models/book.js'
+import { random } from '../../utils/common.js'
+
+const bookModel = new BookModel()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    books: [],
+    searching: false,
+    more: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const hotListPromise = bookModel.getHotList()
+    hotListPromise.then(resp => {
+      this.setData({
+        books: resp
+      })
+    })
+  },
 
+  onSearch () {
+    this.setData({
+      searching: true
+    })
+  },
+
+  onCancel () {
+    this.setData({
+      searching: false
+    })
   },
 
   /**
@@ -54,7 +78,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      more: random(16)
+    })
   },
 
   /**

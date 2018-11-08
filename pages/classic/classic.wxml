@@ -1,7 +1,12 @@
 <view class='container'>
   <view class="header">
     <v-epsoide class="epsoide" index="{{classicData.index}}"></v-epsoide>
-    <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></v-like>
+    <view class='like-container'>
+      <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></v-like>
+      <v-button class="share-btn" open-type='share'>
+        <image slot="img" class="share" src="/images/icon/share.png"></image>
+      </v-button>
+    </view>
   </view>
 
   <v-movie hidden="{{classicData.data.type !== 100}}" img="{{classicData.data.image}}" content="{{classicData.data.content}}"></v-movie>
